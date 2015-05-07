@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('poseidon')
+angular.module('zilo')
 .config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise('/');
 
