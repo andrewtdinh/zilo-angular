@@ -8,6 +8,11 @@ angular.module('zilo')
     this.city = obj.city;
     this.state = obj.state;
     this.zip = obj.zip;
+    this.photo = obj.photo;
+    this.price = obj.price;
+    this.beds = obj.beds;
+    this.baths = obj.baths;
+    this.sqft = obj.sqft;
     // this.departure = obj.departure;
   }
 

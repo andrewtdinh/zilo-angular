@@ -7,6 +7,11 @@ angular.module('zilo')
     this.addrString = obj.addrString;
     this.lat = obj.lat;
     this.lng = obj.lng;
+    this.photo = obj.photo;
+    this.price = obj.price;
+    this.beds = obj.beds;
+    this.baths = obj.baths;
+    this.sqft = obj.sqft;
   }
 
 
