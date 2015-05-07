@@ -2,7 +2,9 @@
 
 angular.module('zilo')
 .controller('UsersCtrl', function($scope, $state, $window, User){
-  $scope.name = $state.current.name;
+  $scope.oauth = function(provider){
+    User.oauth(provider);
+  };
 
   $scope.submit = function(user){
     if($scope.name === 'register'){

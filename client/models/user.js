@@ -1,10 +1,24 @@
 'use strict';
 
 angular.module('zilo')
-.factory('User', function($rootScope){
+.factory('User', function($rootScope, $http, nodeUrl){
 
-  function User(){
+  function User(obj){
+    this.email = obj.email;
+    this.avatar = obj.avatar;
   }
+
+  User.prototype.save = function(){
+    return $http.put(nodeUrl + '/users', this);
+  };
+
+  User.show = function(){
+    return $http.get(nodeUrl + '/users');
+  };
+
+  User.oauth = function(provider){
+     return $rootScope.afAuth.$authWithOAuthPopup(provider);
+   };
 
   User.register = function(user){
     return $rootScope.afAuth.$createUser(user);
