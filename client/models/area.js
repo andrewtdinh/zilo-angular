@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('roadtrip')
+angular.module('zilo')
 .factory('Area', function($http, nodeUrl){
 
   function Area(obj){
@@ -17,8 +17,8 @@ angular.module('roadtrip')
   //   return $http.get(nodeUrl + '/trips');
   // };
 
-  Trip.prototype.save = function(){
-    return $http.post(nodeUrl + '/trips', this);
+  Area.prototype.save = function(){
+    return $http.post(nodeUrl + '/areas', this);
   };
 
   // Trip.prototype.destroy = function(){
@@ -33,5 +33,5 @@ angular.module('roadtrip')
   //   return $http.post(nodeUrl + '/trips/' + this._id + '/stops', stop);
   // };
 
-  return Trip;
+  return Area;
 });

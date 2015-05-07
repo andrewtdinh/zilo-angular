@@ -1,20 +1,23 @@
 'use strict';
 
 angular.module('zilo')
-.controller('NavCtrl', function($rootScope, $scope, $state, User, $http, $firebaseObject){
+.controller('NavCtrl', function($rootScope, $scope, $state, User, $http, $window){
 
   $scope.afAuth.$onAuth(function(data){
     if(data){
       $rootScope.activeUser = data;
       $rootScope.displayName = getDisplayName(data);
-      $rootScope.fbUser = $rootScope.fbRoot.child('users/' + data.uid);
-      $rootScope.afUser = $firebaseObject($rootScope.fbUser);
       $http.defaults.headers.common.Authorization = 'Bearer ' + data.token;
+      User.findOrCreate()
+      .then(function(){
+        $state.go('home');
+      })
+      .catch(function(){
+        $window.swal({title: 'Registration Error', text: 'There was a problem with your registration. Please try again.', type: 'error'});
+      });
     }else{
       $rootScope.activeUser = null;
       $rootScope.displayName = null;
-      $rootScope.fbUser = null;
-      $rootScope.afUser = null;
       $http.defaults.headers.common.Authorization = null;
     }
 

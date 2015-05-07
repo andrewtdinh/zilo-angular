@@ -12,9 +12,14 @@ angular.module('zilo')
     return $http.put(nodeUrl + '/users', this);
   };
 
-  User.show = function(){
-    return $http.get(nodeUrl + '/users');
+  User.findOrCreate = function(){
+   return $http.post(nodeUrl + '/users');
   };
+
+
+  // User.show = function(){
+  //   return $http.get(nodeUrl + '/users');
+  // };
 
   User.oauth = function(provider){
      return $rootScope.afAuth.$authWithOAuthPopup(provider);
