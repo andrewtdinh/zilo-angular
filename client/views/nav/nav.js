@@ -38,6 +38,8 @@ angular.module('zilo')
         return data.google.displayName;
       case 'github':
         return data.github.displayName;
+      case 'facebook':
+        return data.facebook.displayName;
     }
   }
 });
