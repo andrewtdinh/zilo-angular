@@ -1,0 +1,20 @@
+h3 NEW NEIGHBORHOOD
+
+.row
+  .col-xs-2
+    form(name='areaForm', novalidate)
+      .form-group
+        label(for='street') Street Address
+        input.form-control#street(type='text', name='street', ng-model='listing.street', required)
+      .form-group
+        label(for='city') City
+        input.form-control#city(type='text', name='city', ng-model='listing.city', required)
+      .form-group
+        label(for='state') State
+        input.form-control#state(type='text', name='state', placeholder='Alaska', ng-model='listing.state', required)
+      .form-group
+        label(for='zip') Zip Code
+        input.form-control#zip(type='text', name='zip', ng-model='listing.zip', required)
+      .form-group
+        button.btn.btn-success(type='submit', ng-click='create(listing)') Create Listing
+  .col-xs-8
