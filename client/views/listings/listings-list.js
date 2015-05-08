@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('zilo')
-.controller('ListingsListCtrl', function($scope, $window, Area, Map){
+.controller('ListingsListCtrl', function($scope, $window, Area, Map, $state){
   var map;
   $scope.zips = [];
   $scope.cities = [];
@@ -22,6 +22,10 @@ angular.module('zilo')
       console.log('$scope.cities: ', $scope.cities);
     });
   }
+
+  $scope.show = function(listing){
+    $state.go('listings.show', {listingId: listing._id});
+  };
 
   $scope.filterByCity = function(selectedCity){
     Area.findByCity(selectedCity)

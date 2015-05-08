@@ -17,7 +17,7 @@
 .row
   .col-xs-1
     .contDiv(ng-repeat='listing in listings track by $index', ng-mouseenter='toggleBounce(listing)', ng-mouseleave='toggleBounce(listing)')
-      .photoDiv
+      .photoDiv(ng-click='show(listing)')
         img.photoThumb(ng-src='{{listing.photo}}')
         h4 {{listing.price | currency}}
         h5 {{listing.sqft}} &nbsp; SQFT

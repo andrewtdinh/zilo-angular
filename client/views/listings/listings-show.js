@@ -3,7 +3,14 @@
 'use strict';
 
 angular.module('zilo')
-.controller('ListingShowCtrl', function($scope, $state, $window, Area, Map){
+.controller('ListingsShowCtrl', function($scope, $state, $window, Listing, Map){
+  var listingId = $state.params.listingId;
+  console.log('listingId: ', listingId);
+  Listing.show(listingId)
+  .then(function(listing){
+    $scope.listing = listing;
+    console.log('$scope.listing: ', $scope.listing);
+  });
   // Area.show($state.params.areaId)
   // .then(function(response){
   //   $scope.area = response.data;

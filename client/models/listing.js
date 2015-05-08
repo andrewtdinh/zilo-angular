@@ -16,9 +16,9 @@ angular.module('zilo')
     // this.departure = obj.departure;
   }
 
-  // Trip.show = function(tripId){
-  //   return $http.get(nodeUrl + '/trips/' + tripId);
-  // };
+  Listing.show = function(listingId){
+    return $http.get(nodeUrl + '/listings/' + listingId);
+  };
   //
   // Trip.find = function(){
   //   return $http.get(nodeUrl + '/trips');
