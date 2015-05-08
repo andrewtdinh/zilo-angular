@@ -2,7 +2,7 @@
 h3  My Listings
 .row
   .col-xs-1
-    .contDiv(ng-repeat='listing in listings track by $index')
+    .contDiv(ng-repeat='listing in listings track by $index', ng-mouseenter='toggleBounce(listing)', ng-mouseleave='toggleBounce(listing)')
       .photoDiv
         img.photoThumb(ng-src='{{listing.photo}}')
         h4 {{listing.price | currency}}

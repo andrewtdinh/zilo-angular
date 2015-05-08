@@ -8,7 +8,6 @@ angular.module('zilo')
     $scope.listings = response.data.listings;
     $scope.centerLat = getMeanLat($scope.listings);
     $scope.centerLng = getMeanLng($scope.listings);
-    console.log('listings: ', $scope.listings);
     map = Map.create('#listingMap', $scope.centerLat.toFixed(4), $scope.centerLng.toFixed(4), 7);
     addMarkers();
   });
@@ -16,10 +15,12 @@ angular.module('zilo')
   // var map = Map.create('#listingMap', 37.5483, -100.9886, 4);
 
   var markers = [];
+  $scope.zips = [];
+
   function addMarkers(){
     clearMarkers();
     markers = $scope.listings.map(function(s){
-      return Map.addMarker(map, s.lat, s.lng, s.name, '/assets/house.png');
+      s.marker = Map.addMarker(map, s.lat, s.lng, s.name, '/assets/house.png');
     });
   }
 
@@ -41,6 +42,22 @@ angular.module('zilo')
       return prev + curr.lng;
     }, 0)/ listings.length);
   }
+
+  function getZips(listings){
+
+    return (listings.reduce(function(prev, curr){
+      return prev + curr.lng;
+    }, 0)/ listings.length);
+  }
+
+
+  $scope.toggleBounce = function (listing) {
+    if (listing.marker.getAnimation() !== null) {
+      listing.marker.setAnimation(null);
+    } else {
+      listing.marker.setAnimation($window.google.maps.Animation.BOUNCE);
+    }
+  };
   //
   // $scope.destroy = function(obj){
   //   var area = new Area(obj);
