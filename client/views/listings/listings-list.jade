@@ -4,12 +4,12 @@
     h4  House Listings
   .col-xs-2
   .col-xs-2
-    .form-group
+    .form-group(ng-show='activeUser')
       select(ng-model='selectedZip')
         option(ng-repeat='zip in zips') {{zip}}
       button.btn.btn-xs.btn-info(ng-click='filterByZip(selectedZip)') Filter by Zip
   .col-xs-7
-    .form-group
+    .form-group(ng-show='activeUser')
       select(ng-model='selectedCity')
         option(ng-repeat='city in cities') {{city}}
       button.btn.btn-xs.btn-info(ng-click='filterByCity(selectedCity)') Filter by City
