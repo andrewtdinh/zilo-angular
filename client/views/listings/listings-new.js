@@ -4,6 +4,8 @@
 
 angular.module('zilo')
 .controller('ListingsNewCtrl', function($scope, $state, Listing, Map, Area, $window){
+  $scope.state = $state.current.name;
+
   $scope.create = function(o){
     var listing = new Listing(o);
     var address = [];

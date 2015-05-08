@@ -19,26 +19,18 @@ angular.module('zilo')
   Listing.show = function(listingId){
     return $http.get(nodeUrl + '/listings/' + listingId);
   };
-  //
-  // Trip.find = function(){
-  //   return $http.get(nodeUrl + '/trips');
-  // };
 
   Listing.prototype.save = function(){
     return $http.post(nodeUrl + '/listings', this);
   };
 
-  // Trip.prototype.destroy = function(){
-  //   return $http.delete(nodeUrl + '/trips/' + this._id);
-  // };
-  //
-  // Trip.prototype.destroyStop = function(stop){
-  //   return $http.delete(nodeUrl + '/trips/' + this._id + '/stops/' + stop._id);
-  // };
-  //
-  // Trip.prototype.addStop = function(stop){
-  //   return $http.post(nodeUrl + '/trips/' + this._id + '/stops', stop);
-  // };
+  Listing.destroy = function(listing){
+    return $http.delete(nodeUrl + '/listings/' + listing._id);
+  };
+
+  Listing.edit = function(listing){
+    return $http.put(nodeUrl + '/listings/' + listing._id, listing);
+  };
 
   return Listing;
 });

@@ -12,5 +12,6 @@ angular.module('zilo')
   .state('listings', {url: '/listings', templateUrl: '/views/listings/listings.html', abstract: true})
   .state('listings.new', {url: '/new', templateUrl: '/views/listings/listings-new.html', controller: 'ListingsNewCtrl'})
   .state('listings.list', {url: '/', templateUrl: '/views/listings/listings-list.html', controller: 'ListingsListCtrl'})
-  .state('listings.show', {url: '/{listingId}', templateUrl: '/views/listings/listings-show.html', controller: 'ListingsShowCtrl'});
+  .state('listings.show', {url: '/{listingId}', templateUrl: '/views/listings/listings-show.html', controller: 'ListingsShowCtrl'})
+  .state('listings.edit', {url: '/edit/{listingId}', templateUrl: '/views/listings/listings-new.html', controller: 'ListingsNewCtrl'});
 });
