@@ -5,6 +5,30 @@
 angular.module('zilo')
 .controller('ListingsNewCtrl', function($scope, $state, Listing, Map, Area, $window){
   $scope.state = $state.current.name;
+  $scope.listingId = $state.params.listingId ? $state.params.listingId : '';
+  if($scope.state === 'listings.edit'){
+    Listing.show($scope.listingId)
+    .then(function(response){
+      $scope.listing = response.data.listing[0];
+      var streetAddress = $scope.listing.addrString.split(',')[0];
+      var addrArray = $scope.listing.addrString.split(' ');
+      var state = addrArray[addrArray.length - 3];
+      $scope.listing.state = state;
+      $scope.listing.street = streetAddress;
+    });
+  }
+
+
+  $scope.edit = function(listing){
+    var l = angular.copy(listing);
+    // __v
+    // _id
+
+    // Listing.edit(listing, )
+    // .then(function(){
+    //   $state.go('listings.list');
+    // });
+  };
 
   $scope.create = function(o){
     var listing = new Listing(o);
