@@ -1,31 +1,21 @@
 h3 Listing Details
-
-//- .row
-//-   .col-xs-6
-//-     #map
-//-   .col-xs-6
-//-     .row
-//-       .col-xs-6
-//-         form(name='stopForm', novalidate)
-//-           .form-group
-//-             label(for='name') Name
-//-             input.form-control#name(type='text', name='name', ng-model='stop.name')
-//-           .form-group
-//-             button.btn.btn-default(type='submit', ng-click='create(stop)') Add Stop
-//-       .col-xs-6
-//-     .row
-//-       .col-xs-6
-//-         table.table.table-striped
-//-           thead
-//-             tr
-//-               th
-//-               th Name
-//-               th Latitude
-//-               th Longitude
-//-           tbody
-//-             tr(ng-repeat='stop in trip.stops')
-//-               td: button.btn.btn-danger.btn-xs(ng-click='destroy(stop)') Delete
-//-               td {{stop.name}}
-//-               td {{stop.lat | number:4}}
-//-               td {{stop.lng | number:4}}
-//-       .col-xs-6
+.row
+  .col-xs-3
+    table.table.table-striped
+      tbody
+        tr
+          td Address: &nbsp; {{listing.addrString}}
+        tr
+          td Price: &nbsp; {{listing.price | currency}}
+        tr
+          td Number of Beds: &nbsp; {{listing.beds}}
+        tr
+          td Number of Baths: &nbsp; {{listing.baths}}
+        tr
+          td Square Footage: &nbsp; {{listing.sqft}} &nbsp; SQFT
+        tr
+          td Date Added: &nbsp; {{listing.createdAt | date: 'yyyy-MM-dd' }}
+  .col-xs-2
+    img#showPagePhoto(ng-src='{{listing.photo}}')
+  .col-xs-7
+    #showPageMap

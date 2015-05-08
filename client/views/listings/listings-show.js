@@ -5,12 +5,23 @@
 angular.module('zilo')
 .controller('ListingsShowCtrl', function($scope, $state, $window, Listing, Map){
   var listingId = $state.params.listingId;
-  console.log('listingId: ', listingId);
+  var map;
+  // var markers = [];
   Listing.show(listingId)
-  .then(function(listing){
-    $scope.listing = listing;
+  .then(function(response){
+    $scope.listing = response.data.listing[0];
+    map = Map.create('#showPageMap', $scope.listing.lat, $scope.listing.lng, 15);
+    addMarkers($scope.listing);
     console.log('$scope.listing: ', $scope.listing);
   });
+
+  function addMarkers(s){
+    // clearMarkers();
+    // markers = $scope.listings.map(function(s){
+    Map.addMarker(map, s.lat, s.lng, s.name, '/assets/house.png');
+    // });
+  }
+
   // Area.show($state.params.areaId)
   // .then(function(response){
   //   $scope.area = response.data;
