@@ -2,10 +2,10 @@
 
 angular.module('zilo')
 .config(function($stateProvider, $urlRouterProvider){
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('listings.list');
 
   $stateProvider
-  .state('home', {url: '/', templateUrl: '/views/general/home.html'})
+  .state('home', {url: '/', templateUrl: '/views/listings/listings-list.html', controller: 'ListingsListCtrl'})
   .state('register', {url: '/register', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
   .state('login', {url: '/login', templateUrl: '/views/users/users.html', controller: 'UsersCtrl'})
   // .state('profile', {url: '/profile', templateUrl: '/views/users/profile.html', controller: 'ProfileCtrl'})

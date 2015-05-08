@@ -15,19 +15,21 @@ angular.module('zilo')
       var state = addrArray[addrArray.length - 3];
       $scope.listing.state = state;
       $scope.listing.street = streetAddress;
+      $scope.photo = '';
+      $scope.photo = $scope.listing.photo;
+      console.log('$scope.photo: ', $scope.photo);
     });
   }
 
 
   $scope.edit = function(listing){
-    var l = angular.copy(listing);
-    // __v
-    // _id
-
-    // Listing.edit(listing, )
-    // .then(function(){
-    //   $state.go('listings.list');
-    // });
+    var l = new Listing(listing);
+    l.photo = $scope.photo;
+    console.log('l: ', l);
+    Listing.edit(l, $scope.listingId)
+    .then(function(listing){
+      $state.go('listings.list');
+    });
   };
 
   $scope.create = function(o){

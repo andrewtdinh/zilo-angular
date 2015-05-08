@@ -28,8 +28,8 @@ angular.module('zilo')
     return $http.delete(nodeUrl + '/listings/' + listing._id);
   };
 
-  Listing.edit = function(listing){
-    return $http.put(nodeUrl + '/listings/' + listing._id, listing);
+  Listing.edit = function(listing, listingId){
+    return $http.put(nodeUrl + '/listings/' + listingId, listing);
   };
 
   return Listing;
