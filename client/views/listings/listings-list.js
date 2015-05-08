@@ -3,22 +3,50 @@
 angular.module('zilo')
 .controller('ListingsListCtrl', function($scope, $window, Area, Map){
   var map;
-  Area.find()
-  .then(function(response){
-    $scope.listings = response.data.listings;
-    $scope.centerLat = getMeanLat($scope.listings);
-    $scope.centerLng = getMeanLng($scope.listings);
-    map = Map.create('#listingMap', $scope.centerLat.toFixed(4), $scope.centerLng.toFixed(4), 7);
-    addMarkers();
-  });
-
-  // var map = Map.create('#listingMap', 37.5483, -100.9886, 4);
-
-  var markers = [];
   $scope.zips = [];
+  $scope.cities = [];
+  var markers = [];
+  getListings();
+
+  function getListings(){
+    Area.find()
+    .then(function(response){
+      $scope.listings = response.data.listings;
+      $scope.centerLat = getMeanLat($scope.listings);
+      $scope.centerLng = getMeanLng($scope.listings);
+      map = Map.create('#listingMap', $scope.centerLat.toFixed(4), $scope.centerLng.toFixed(4), 7);
+      addMarkers();
+      getZips($scope.listings);
+      getCities($scope.listings);
+      console.log('$scope.zips: ', $scope.zips);
+      console.log('$scope.cities: ', $scope.cities);
+    });
+  }
+
+  $scope.filterByCity = function(selectedCity){
+    Area.findByCity(selectedCity)
+    .then(function(response){
+      $scope.listings = response.data.listings;
+      $scope.centerLat = getMeanLat($scope.listings);
+      $scope.centerLng = getMeanLng($scope.listings);
+      map = Map.create('#listingMap', $scope.centerLat.toFixed(4), $scope.centerLng.toFixed(4), 7);
+      addMarkers();
+    });
+  };
+
+  $scope.filterByZip = function(selectedZip){
+    Area.findByZip(selectedZip)
+    .then(function(response){
+      $scope.listings = response.data.listings;
+      $scope.centerLat = getMeanLat($scope.listings);
+      $scope.centerLng = getMeanLng($scope.listings);
+      map = Map.create('#listingMap', $scope.centerLat.toFixed(4), $scope.centerLng.toFixed(4), 7);
+      addMarkers();
+    });
+  };
 
   function addMarkers(){
-    clearMarkers();
+    // clearMarkers();
     markers = $scope.listings.map(function(s){
       s.marker = Map.addMarker(map, s.lat, s.lng, s.name, '/assets/house.png');
     });
@@ -44,10 +72,19 @@ angular.module('zilo')
   }
 
   function getZips(listings){
+    listings.forEach(function(listing){
+      if ($scope.zips.indexOf(listing.zip)){
+        $scope.zips.push(listing.zip);
+      }
+    });
+  }
 
-    return (listings.reduce(function(prev, curr){
-      return prev + curr.lng;
-    }, 0)/ listings.length);
+  function getCities(listings){
+    listings.forEach(function(listing){
+      if ($scope.cities.indexOf(listing.city)){
+        $scope.cities.push(listing.city);
+      }
+    });
   }
 
 

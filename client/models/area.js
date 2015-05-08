@@ -26,5 +26,13 @@ angular.module('zilo')
     return $http.get(nodeUrl + '/listings');
   };
 
+  Area.findByCity = function(city){
+    return $http.get(nodeUrl + '/listings/city/' + city);
+  };
+
+  Area.findByZip = function(zip){
+    return $http.get(nodeUrl + '/listings/zip/' + zip);
+  };
+
   return Area;
 });
