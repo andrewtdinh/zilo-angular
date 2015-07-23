@@ -15,11 +15,11 @@
       button.filterBtn.btn.btn-xs.btn-info(ng-click='filterByCity(selectedCity)') Filter by City
     
 .row
-  .col-xs-1
+  .col-xs-2
     .contDiv(ng-repeat='listing in listings track by $index', ng-mouseenter='toggleBounce(listing)', ng-mouseleave='toggleBounce(listing)')
       .photoDiv(ng-click='show(listing)')
         img.photoThumb(ng-src='{{listing.photo}}')
-        h4 {{listing.price | currency}}
-        h5 {{listing.sqft}} &nbsp; SQFT
-  .col-xs-11
+        h5 {{listing.price | currency}}
+        h6 {{listing.sqft}} &nbsp; SQFT
+  .col-xs-10
     #listingMap
