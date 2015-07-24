@@ -14,7 +14,7 @@ angular.module('zilo')
       $scope.listings = response.data.listings;
       $scope.centerLat = getMeanLat($scope.listings);
       $scope.centerLng = getMeanLng($scope.listings);
-      map = Map.create('#listingMap', $scope.centerLat.toFixed(4), $scope.centerLng.toFixed(4), 7);
+      map = Map.create('#listingMap', $scope.centerLat.toFixed(4), $scope.centerLng.toFixed(4), 5);
       addMarkers();
       getZips($scope.listings);
       getCities($scope.listings);
