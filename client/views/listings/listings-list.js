@@ -18,8 +18,8 @@ angular.module('zilo')
       addMarkers();
       getZips($scope.listings);
       getCities($scope.listings);
-      console.log('$scope.zips: ', $scope.zips);
-      console.log('$scope.cities: ', $scope.cities);
+      // console.log('$scope.zips: ', $scope.zips);
+      // console.log('$scope.cities: ', $scope.cities);
     });
   }
 
