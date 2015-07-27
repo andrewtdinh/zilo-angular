@@ -18,9 +18,9 @@ h3 Listing Details
         tr
           td Date Added: &nbsp; {{listing.createdAt | date: 'yyyy-MM-dd' }}
         tr
-          td(ng-show='activeUser', ng-click='destroy(listing)')
-            button.modifyListing.btn-md.btn-danger Delete Listing
-            button.modifyListing.btn-md.btn-warning Edit Listing
+          td(ng-show='activeUser')
+            button.modifyListing.btn-md.btn-warning(ng-click='edit(listing)') Edit Listing
+            button.deleteListing.btn-md.btn-danger(ng-click='delete(listing)') Delete Listing
         tr
           td
             img#showPagePhoto(ng-src='{{listing.photo}}')
