@@ -3,7 +3,7 @@
     h3 {{}} Listing
 
 .row
-  .col-md-4.col-md-offset-2
+  .col-md-3.col-md-offset-2
     form(name='areaForm', novalidate)
       .form-group
         label(for='street') Street Address
@@ -16,20 +16,26 @@
       .form-group
         label(for='state') State
         input.form-control#state(type='text', name='state', placeholder='Alaska', ng-model='listing.state', required)
+  .col-md-1
       .form-group
         label(for='zip') Zip Code
         input.form-control#zip(type='text', name='zip', ng-model='listing.zip', required)
+.row
+  .col-md-2.col-md-offset-2
       .form-group
         label(for='price') List Price
         input.form-control#price(type='number', name='price', ng-model='listing.price', required)
+  .col-md-1
       .form-group
-        label(for='beds') Number of Bedrooms
+        label(for='beds') # of Bedrooms
         input.form-control#beds(type='number', name='beds', ng-model='listing.beds', required)
+  .col-md-2
       .form-group
-        label(for='baths') Number of Bathrooms
+        label(for='baths') # of Baths
         input.form-control#baths(type='number', name='baths', ng-model='listing.baths', required)
+  .col-md-1
       .form-group
-        label(for='sqft') Square Footage
+        label(for='sqft') SQFT
         input.form-control#sqft(type='number', name='sqft', ng-model='listing.sqft', required)
       .form-group
         label(for='photo') Listing Photo
