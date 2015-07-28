@@ -50,7 +50,6 @@ angular.module('zilo')
         var area = new Area(listing);
         area.save()
         .then(function(response){
-          console.log('listing: ', response);
           $state.go('listings.list');
         });
       }
