@@ -59,8 +59,8 @@ angular.module('zilo')
   $scope.camOn = function(){
     $scope.webcamOn = true;
     $window.Webcam.set({
-      width: 320,
-      height: 240,
+      width: 248,
+      height: 186,
       destWidth: 640,
       destHeight: 480,
       imageFormat: 'png',
