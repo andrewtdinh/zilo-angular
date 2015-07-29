@@ -46,8 +46,6 @@
     form
       .form-group
         button.webButton.btn.btn-info(ng-click='camOn()', ng-hide='webcamOn') Webcam On
-        //- img#photo(ng-src='{{listing.photo}}')
-  .col-md-3
         button.webButton.btn.btn-danger(ng-click='camOff()', ng-show='webcamOn') Webcam Off
         button.webButton.btn.btn-primary(ng-click='takeSnapshot()', ng-show='webcamOn') Take Snapshot
         #camera
